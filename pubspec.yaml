@@ -1,12 +1,12 @@
-name: flutter_twilio_conversations
+name: flutter_twilio_chat_conversations
 description: A fork of original twilio_conversations plugin for Twilio Conversations.
-version: 0.1.1+2
+version: 0.1.2
 homepage: https://github.com/ShiftHackZ/Flutter-Twilio-Conversations-Plugin
 repository: https://github.com/ShiftHackZ/Flutter-Twilio-Conversations-Plugin
 issue_tracker: https://github.com/ShiftHackZ/Flutter-Twilio-Conversations-Plugin/issues
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
   flutter: ">=1.20.0"
 
 dependencies:

@@ -1,7 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/services.dart';
-import 'package:twilio_conversations/api.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/api.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 class Message {
   final String? sid;
@@ -92,6 +92,7 @@ class Message {
             .getMediaContentTemporaryUrl(conversationSid, uMessageIndex);
         return result;
       }
+      return null;
     } on PlatformException catch (err) {
       throw TwilioConversations.convertException(err);
     }

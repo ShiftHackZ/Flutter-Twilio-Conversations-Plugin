@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 class ConversationsNotifier extends ChangeNotifier {
   final plugin = TwilioConversations();

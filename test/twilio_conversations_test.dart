@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:twilio_conversations/api.dart';
-import 'package:twilio_conversations/src/src.dart';
+import 'package:flutter_twilio_chat_conversations/api.dart';
+import 'package:flutter_twilio_chat_conversations/src/src.dart';
 
 import 'twilio_conversations_test.mocks.dart';
 

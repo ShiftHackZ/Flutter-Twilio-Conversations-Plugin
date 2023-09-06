@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 class MessagesNotifier extends ChangeNotifier {
   var messageInputTextController = TextEditingController();

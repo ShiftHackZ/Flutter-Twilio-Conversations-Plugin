@@ -1,7 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 import 'package:twilio_conversations_example/messages/messages_notifier.dart';
 import 'package:twilio_conversations_example/util.dart';
 

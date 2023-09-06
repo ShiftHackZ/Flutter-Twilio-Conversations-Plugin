@@ -1,5 +1,5 @@
 import 'package:mockito/mockito.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 import 'user_test.mocks.dart';
 

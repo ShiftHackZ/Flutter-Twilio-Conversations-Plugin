@@ -1,7 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:mockito/mockito.dart';
-import 'package:twilio_conversations/api.dart';
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/api.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 import 'message_test.mocks.dart';
 

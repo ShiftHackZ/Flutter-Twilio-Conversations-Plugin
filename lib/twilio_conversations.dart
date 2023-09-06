@@ -1,4 +1,4 @@
 /// Twilio Conversations Flutter plugin.
-library twilio_conversations;
+library flutter_twilio_chat_conversations;
 
 export 'src/src.dart';

@@ -1,4 +1,4 @@
-import 'package:twilio_conversations/twilio_conversations.dart';
+import 'package:flutter_twilio_chat_conversations/twilio_conversations.dart';
 
 class NotificationRegistrationEvent {
   final bool isSuccessful;
