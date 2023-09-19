@@ -1,3 +1,6 @@
+## 0.1.3
+- **Android**: ios podspec hotfix
+
 ## 0.1.2
 - **Android**: migrate to kotlin 1.8.0, gradle 7.5
 
