@@ -1,6 +1,6 @@
 #import "TwilioConversationsPlugin.h"
 #if __has_include(<flutter_twilio_chat_conversations/flutter_twilio_chat_conversations-Swift.h>)
-#import <twilio_conversations/twilio_conversations-Swift.h>
+#import <flutter_twilio_chat_conversations/flutter_twilio_chat_conversations-Swift.h>
 #else
 // Support project import fallback if the generated compatibility header
 // is not copied when this plugin is created as a library.
