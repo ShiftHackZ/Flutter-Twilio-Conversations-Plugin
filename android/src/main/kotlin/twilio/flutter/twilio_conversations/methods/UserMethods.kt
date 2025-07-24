@@ -20,29 +20,33 @@ class UserMethods : Api.UserApi {
         result: Api.Result<Void>
     ) {
         debug("setFriendlyName => identity: $identity")
-        val client = TwilioConversationsPlugin.client
-            ?: return result.error(ClientNotInitializedException("Client is not initialized"))
+        try {
+            val client = TwilioConversationsPlugin.client
+                ?: return result.error(ClientNotInitializedException("Client is not initialized"))
 
-        client.getAndSubscribeUser(identity, object : CallbackListener<User> {
-            override fun onSuccess(user: User) {
-                user.setFriendlyName(friendlyName, object : StatusListener {
-                    override fun onSuccess() {
-                        debug("setFriendlyName => onSuccess")
-                        result.success(null)
-                    }
+            client.getAndSubscribeUser(identity, object : CallbackListener<User> {
+                override fun onSuccess(user: User) {
+                    user.setFriendlyName(friendlyName, object : StatusListener {
+                        override fun onSuccess() {
+                            debug("setFriendlyName => onSuccess")
+                            result.success(null)
+                        }
 
-                    override fun onError(errorInfo: ErrorInfo) {
-                        debug("setFriendlyName => onError: $errorInfo")
-                        result.error(TwilioException(errorInfo.code, errorInfo.message))
-                    }
-                })
-            }
+                        override fun onError(errorInfo: ErrorInfo) {
+                            debug("setFriendlyName => onError: $errorInfo")
+                            result.error(TwilioException(errorInfo.code, errorInfo.message))
+                        }
+                    })
+                }
 
-            override fun onError(errorInfo: ErrorInfo) {
-                debug("setFriendlyName => onError: $errorInfo")
-                result.error(TwilioException(errorInfo.code, errorInfo.message))
-            }
-        })
+                override fun onError(errorInfo: ErrorInfo) {
+                    debug("setFriendlyName => onError: $errorInfo")
+                    result.error(TwilioException(errorInfo.code, errorInfo.message))
+                }
+            })
+        } catch (e: Exception) {
+            return result.error(e)
+        }
     }
 
     override fun setAttributes(
@@ -51,31 +55,35 @@ class UserMethods : Api.UserApi {
         result: Api.Result<Void>
     ) {
         debug("setAttributes => identity: $identity")
-        val client = TwilioConversationsPlugin.client
-            ?: return result.error(ClientNotInitializedException("Client is not initialized"))
-        val userAttributes = Mapper.pigeonToAttributes(attributes)
-            ?: return result.error(ConversionException("Could not convert $attributes to valid Attributes"))
+        try {
+            val client = TwilioConversationsPlugin.client
+                ?: return result.error(ClientNotInitializedException("Client is not initialized"))
+            val userAttributes = Mapper.pigeonToAttributes(attributes)
+                ?: return result.error(ConversionException("Could not convert $attributes to valid Attributes"))
 
-        client.getAndSubscribeUser(identity, object : CallbackListener<User> {
-            override fun onSuccess(user: User) {
-                user.setAttributes(userAttributes, object : StatusListener {
-                    override fun onSuccess() {
-                        debug("setAttributes => onSuccess")
-                        result.success(null)
-                    }
+            client.getAndSubscribeUser(identity, object : CallbackListener<User> {
+                override fun onSuccess(user: User) {
+                    user.setAttributes(userAttributes, object : StatusListener {
+                        override fun onSuccess() {
+                            debug("setAttributes => onSuccess")
+                            result.success(null)
+                        }
 
-                    override fun onError(errorInfo: ErrorInfo) {
-                        debug("setAttributes => onError: $errorInfo")
-                        result.error(TwilioException(errorInfo.code, errorInfo.message))
-                    }
-                })
-            }
+                        override fun onError(errorInfo: ErrorInfo) {
+                            debug("setAttributes => onError: $errorInfo")
+                            result.error(TwilioException(errorInfo.code, errorInfo.message))
+                        }
+                    })
+                }
 
-            override fun onError(errorInfo: ErrorInfo) {
-                debug("setAttributes => onError: $errorInfo")
-                result.error(TwilioException(errorInfo.code, errorInfo.message))
-            }
-        })
+                override fun onError(errorInfo: ErrorInfo) {
+                    debug("setAttributes => onError: $errorInfo")
+                    result.error(TwilioException(errorInfo.code, errorInfo.message))
+                }
+            })
+        } catch (e: Exception) {
+            return result.error(e)
+        }
     }
 
     fun debug(message: String) {
