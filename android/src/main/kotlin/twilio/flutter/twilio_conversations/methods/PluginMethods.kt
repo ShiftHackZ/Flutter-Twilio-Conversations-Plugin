@@ -25,26 +25,34 @@ class PluginMethods : Api.PluginApi {
 
     override fun create(jwtToken: String, properties: Api.PropertiesData, result: Api.Result<Api.ConversationClientData>) {
         debug("create => jwtToken: $jwtToken")
-        val props = ConversationsClient.Properties.newBuilder()
-            .setRegion(properties.region)
-            .createProperties()
+        try {
+            val props = ConversationsClient.Properties.newBuilder()
+                .setRegion(properties.region)
+                .createProperties()
 
-        ConversationsClient.create(TwilioConversationsPlugin.applicationContext, jwtToken, props, object :
-            CallbackListener<ConversationsClient> {
-            override fun onSuccess(conversationsClient: ConversationsClient) {
-                debug("create => onSuccess - myIdentity: '${conversationsClient.myUser?.identity ?: "unknown"}'")
-                TwilioConversationsPlugin.client = conversationsClient
-                TwilioConversationsPlugin.clientListener = ClientListener()
-                conversationsClient.addListener(TwilioConversationsPlugin.clientListener!!)
-                val clientMap = Mapper.conversationsClientToPigeon(conversationsClient)
-                result.success(clientMap)
-            }
+            ConversationsClient.create(
+                TwilioConversationsPlugin.applicationContext,
+                jwtToken,
+                props,
+                object :
+                    CallbackListener<ConversationsClient> {
+                    override fun onSuccess(conversationsClient: ConversationsClient) {
+                        debug("create => onSuccess - myIdentity: '${conversationsClient.myUser?.identity ?: "unknown"}'")
+                        TwilioConversationsPlugin.client = conversationsClient
+                        TwilioConversationsPlugin.clientListener = ClientListener()
+                        conversationsClient.addListener(TwilioConversationsPlugin.clientListener!!)
+                        val clientMap = Mapper.conversationsClientToPigeon(conversationsClient)
+                        result.success(clientMap)
+                    }
 
-            override fun onError(errorInfo: ErrorInfo) {
-                debug("create => onError: ${errorInfo.message}")
-                result.error(TwilioException(errorInfo.code, errorInfo.message))
-            }
-        })
+                    override fun onError(errorInfo: ErrorInfo) {
+                        debug("create => onError: ${errorInfo.message}")
+                        result.error(TwilioException(errorInfo.code, errorInfo.message))
+                    }
+                })
+        } catch (e: Exception) {
+            return result.error(e)
+        }
     }
 
     fun debug(message: String) {

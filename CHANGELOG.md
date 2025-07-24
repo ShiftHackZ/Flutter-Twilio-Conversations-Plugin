@@ -1,3 +1,6 @@
+## 0.1.5
+- **Android**: Error handling in Kotlin-level scope
+
 ## 0.1.4
 - **iOS**: Fix Lexical or Preprocessor Issue (Xcode): 'twilio_conversations-Swift.h' file not found;
 - **Android**: Migrate multidex android dependency to androidx artifact.
